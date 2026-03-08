@@ -1,19 +1,20 @@
 title: MP MLG Wiki
-description: Личная вики по лору
+description: Личная вики
 theme: null
 markdown: kramdown
 
-# ВАЖНО: Включаем обработку папки _characters
+# ВАЖНО: Укажите имя репозитория здесь
+baseurl: "/MP_MLG_WIKI"
+url: "https://xelleet.github.io"
+
 collections:
   characters:
-    output: true       # Разрешить генерацию HTML файлов
-    permalink: /:title/ # Ссылки будут вида site.com/mp/
+    output: true
+    permalink: /:title/
 
-# Настройки по умолчанию для этой коллекции
 defaults:
   - scope:
       path: ""
-      type: "_characters"
+      type: "characters"
     values:
       layout: "character"
-      permalink: /:title/
