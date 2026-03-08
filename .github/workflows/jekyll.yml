@@ -3,8 +3,8 @@ name: Build and Deploy Jekyll Site
 on:
   push:
     branches:
-      - main  # Или 'master', если ваша главная ветка называется так
-  workflow_dispatch: # Позволяет запустить сборку вручную через кнопку
+      - main  # Убедитесь, что ваша ветка называется 'main'. Если 'master', замените здесь.
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -26,15 +26,16 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
-          bundler-cache: true # Кэширует зависимости для скорости
+          bundler-cache: true # Это ускорит сборку, закэшировав гемы
 
       - name: Install Dependencies
         run: bundle install
 
-      - name: Build Site
+      - name: Build with Jekyll
+        # Вот ключевой момент: мы запускаем Jekyll вручную, игнорируя старые ограничения GitHub
         run: bundle exec jekyll build --destination ./_site
 
-      - name: Upload Artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
