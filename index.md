@@ -13,6 +13,7 @@ title: "Главная - Моя Вики"
 <ul>
   {% for char in characters %}
     <li><a href="https://xelleet.github.io/MP_MLG_WIKI/{{ char.url }}">{{ char.title }}</a></li>
+    <p>test</p>
   {% endfor %}
 </ul>
 
