@@ -1,0 +1,13 @@
+title: Моя Лор-Вики
+description: Личная вики по сюжету и персонажам
+theme: null # Мы используем свои стили, тема не нужна
+markdown: kramdown
+permalink: /:title/ # Ссылки будут вида site.com/mp/
+
+defaults:
+  - scope:
+      path: "_characters"
+      type: "pages"
+    values:
+      layout: "character" # Все файлы в этой папке используют шаблон character.html
+      permalink: /:title/

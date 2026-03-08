@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+
+<div class="wiki-container">
+
+    <!-- ИНФОБОКС (Автоматически заполняется данными из файла статьи) -->
+    <div class="infobox">
+        <div class="infobox-title">{{ page.title }}</div>
+
+        <div class="infobox-image">
+            {% if page.image %}
+                <img src="{{ '/images/' | append: page.image | relative_url }}" alt="{{ page.title }}" onerror="this.style.display='none'; this.parentElement.innerText='Нет фото'">
+            {% else %}
+                <div style="padding:20px; color:#777;">Нет изображения</div>
+            {% endif %}
+        </div>
+        {% if page.caption %}
+        <div class="infobox-caption">{{ page.caption }}</div>
+        {% endif %}
+
+        <table class="infobox-table">
+            {% if page.gender %}<tr><td class="infobox-label">Пол:</td><td>{{ page.gender }}</td></tr>{% endif %}
+            {% if page.birth %}<tr><td class="infobox-label">Дата рождения:</td><td>{{ page.birth }}</td></tr>{% endif %}
+            {% if page.home %}<tr><td class="infobox-label">Дом:</td><td>{{ page.home }}</td></tr>{% endif %}
+            {% if page.height %}<tr><td class="infobox-label">Рост:</td><td>{{ page.height }}</td></tr>{% endif %}
+            {% if page.hair %}<tr><td class="infobox-label">Волосы:</td><td>{{ page.hair }}</td></tr>{% endif %}
+
+            {% if page.jobs %}
+            <tr>
+                <td class="infobox-label">Род занятий:</td>
+                <td>
+                    <ul style="margin:0; padding-left:15px;">
+                        {% for job in page.jobs %}
+                        <li>{{ job }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endif %}
+
+            {% if page.first_appearance %}<tr><td class="infobox-label">Дебют:</td><td>{{ page.first_appearance }}</td></tr>{% endif %}
+            {% if page.last_appearance %}<tr><td class="infobox-label">Последнее появление:</td><td>{{ page.last_appearance }}</td></tr>{% endif %}
+        </table>
+    </div>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <h1>{{ page.title }}</h1>
+
+    <p class="intro">{{ page.intro }}</p>
+
+    <!-- Здесь выводится весь остальной текст статьи (Биография, Внешность и т.д.), написанный в Markdown -->
+    <div class="content">
+        {{ content }}
+    </div>
+
+    <!-- ГАЛЕРЕЯ (Если есть список картинок в front-matter) -->
+    {% if page.gallery %}
+    <h2>Галерея</h2>
+    <div class="gallery">
+        {% for img in page.gallery %}
+        <div class="gallery-item">
+            <img src="{{ '/images/' | append: img.file | relative_url }}" alt="{{ img.desc }}" onerror="this.src='https://via.placeholder.com/200?text=No+Image'">
+            <div class="gallery-caption">{{ img.desc }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
