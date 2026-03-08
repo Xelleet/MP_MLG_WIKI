@@ -1,13 +1,19 @@
-title: Моя Лор-Вики
-description: Личная вики по сюжету и персонажам
-theme: null # Мы используем свои стили, тема не нужна
+title: MP MLG Wiki
+description: Личная вики по лору
+theme: null
 markdown: kramdown
-permalink: /:title/ # Ссылки будут вида site.com/mp/
 
+# ВАЖНО: Включаем обработку папки _characters
+collections:
+  characters:
+    output: true       # Разрешить генерацию HTML файлов
+    permalink: /:title/ # Ссылки будут вида site.com/mp/
+
+# Настройки по умолчанию для этой коллекции
 defaults:
   - scope:
-      path: "_characters"
-      type: "pages"
+      path: ""
+      type: "_characters"
     values:
-      layout: "character" # Все файлы в этой папке используют шаблон character.html
+      layout: "character"
       permalink: /:title/
