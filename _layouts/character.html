@@ -9,7 +9,13 @@
 <body>
 
 <div class="wiki-container">
-
+    <div class="wiki-header" style="margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+        <a href="{{ '/' | relative_url }}" style="font-weight: bold; font-size: 1.1em;">🏠 Главная страница</a>
+        <span style="float: right; font-size: 0.9em; color: #666;">
+            {% if page.type == 'city' %}📍 Локация{% else %}👤 Персонаж{% endif %}
+        </span>
+        <div style="clear: both;"></div>
+    </div>
     <!-- ИНФОБОКС (Автоматически заполняется данными из файла статьи) -->
     <div class="infobox">
         <div class="infobox-title">{{ page.title }}</div>
