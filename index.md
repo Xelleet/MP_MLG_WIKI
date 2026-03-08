@@ -1,20 +1,25 @@
 ---
 layout: default
-title: "Главная - Моя Вики"
+title: Главная страница
 ---
 
-# Добро пожаловать в мою Вики
+# Добро пожаловать в MP MLG Wiki
 
-ОФИЦИАЛЬНАЯ вики по вселенной MP&MLG
-## Список персонажей
+Здесь собраны все персонажи и локации моего проекта.
 
-{% assign characters = site.pages | where: "dir", "/_characters/" | sort: "title" %}
+## Список статей
 
-<ul>
-  {% for char in characters %}
-    <li><a href="https://xelleet.github.io/MP_MLG_WIKI/{{ char.url }}">{{ char.title }}</a></li>
-    <p>test</p>
-  {% endfor %}
-</ul>
-
-*Примечание: Если список пуст, убедитесь, что файлы лежат в папке _characters.*
+{% if site.characters.size > 0 %}
+  <ul>
+    {% for char in site.characters %}
+      <li style="margin-bottom: 10px;">
+        <a href="{{ char.url | relative_url }}" style="font-size: 1.2em; font-weight: bold;">{{ char.title }}</a>
+        {% if char.intro %}
+          <br><small style="color: #555;">{{ char.intro | truncate: 120 }}</small>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Статей пока нет. Добавьте файлы в папку <code>_characters</code>.</p>
+{% endif %}
