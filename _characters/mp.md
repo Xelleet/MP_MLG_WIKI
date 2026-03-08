@@ -21,6 +21,7 @@ gallery:
     desc: "Второе изображение"
   - file: "Character3.jpg"
     desc: "Третье изображение"
+url: 'mp'
 ---
 
 ## Биография

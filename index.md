@@ -5,15 +5,14 @@ title: "Главная - Моя Вики"
 
 # Добро пожаловать в мою Вики
 
-Здесь собраны все персонажи и лор моего проекта.
-
+ОФИЦИАЛЬНАЯ вики по вселенной MP&MLG
 ## Список персонажей
 
 {% assign characters = site.pages | where: "dir", "/_characters/" | sort: "title" %}
 
 <ul>
   {% for char in characters %}
-    <li><a href="{{ char.url }}">{{ char.title }}</a></li>
+    <li><a href="https://xelleet.github.io/MP_MLG_WIKI/{{ char.url }}">{{ char.title }}</a></li>
   {% endfor %}
 </ul>
 
